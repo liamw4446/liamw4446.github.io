@@ -7,6 +7,28 @@ html {
 }
 
 body {
-    color: var(--text)
-    background: var(var(--background))
+    color: var(--text);
+    background:var(--background);
+}
+
+h1,
+h2,
+h3 {
+    color: var(--primary)
+}
+
+p {
+    background: var(--background)
+}
+
+li::marker {
+    color: var(secondary)
+}
+
+img {
+    padding: 4px;
+    border: 4px solid var(--secondary)
+
+
+
 }
