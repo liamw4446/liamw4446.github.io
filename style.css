@@ -9,7 +9,7 @@ html {
 body {
     color: var(--text);
     background:var(--background);
-    font-family: "Bitcount Prop Single Ink"
+    font-family: "Bitcount Prop Single Ink";
 }
 
 h1,
