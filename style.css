@@ -37,3 +37,9 @@ img {
 audio {
     background: var(--secondary)
 }
+* {
+    border: 4px solid indigo
+}
+* {
+margin:5px
+}
