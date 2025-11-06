@@ -1,7 +1,32 @@
-<body> 
-  <p>🎈</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>class links</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bitcount+Prop+Single+Ink:wght@100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<p id="balloon">🎈</p>
 
 <script>
-  // Your code here
+  let ballonEl = document.getElementById("ballon")
+  let fontSize = 10;
+  ballonEl.style.fontSize = fontSize + "px";
+  function handeKeyDown(event) {
+    if (event.key == "ArrowUp") {
+      fontSize * 1.1;
+      ballonEl.style.fontSize = fontSize + "px";
+      event.preventDefault();
+      }
+    if (event.key == "ArrowDown") {
+      fontsize /= 1.1;
+      event.preventDefault();
+      }
+    }
+  winow.addEventListener("keydown", handleKeyDown);
 </script>
 </body>
