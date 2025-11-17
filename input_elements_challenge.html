@@ -69,11 +69,11 @@
       >
       <p>Pick a mode:</p>
       <label
-        ><input type="radio" name="mode" id="lightmode" value="Light" /> Light</label>
+        ><input type="radio" name="mode" id="lightMode" value="Light" /> Light</label>
       <label
-        ><input type="radio" name="mode" id="darkmode" value="Dark" /> Dark</label>
+        ><input type="radio" name="mode" id="sarkMode" value="Dark" /> Dark</label>
       <label
-      ><input type="radio" name="mode" id="systemmode" value="System" checked /> System</label>
+      ><input type="radio" name="mode" id="systemMode" value="System" checked /> System</label>
       <button id="btnSubmit">Submit</button>
       <div class="output" id="modeOutput"></div>
     </section>
@@ -116,13 +116,13 @@
       const subscribeBox = document.getElementById("subscribeBox");
       const btnSubmit = document.getElementById("btnSubmit");
       const modeOutput = document.getElementById("modeOutput");
+      const lighMode = document.getElementById("lightmode");
+      const darkMode = document.getElementById(darkmode);
+      const systemMode = document.getElementById(systemmode);
 
       btnSubmit.addEventListener("click", () => {
         // TODO: Find which radio button is checked and display it.
         // Challenge: Include wheher the user subscribed or not.
-      const checked = document.getElementById(lightmode)
-      const checked = document.getElementById(darkmode)
-      const checked = document.getElementById(systemmode)
       });
     </script>
   </body>
