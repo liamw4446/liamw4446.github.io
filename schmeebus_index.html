@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Clicker with Paid Upgrades</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body { font-family: system-ui, sans-serif; display: grid; place-items: center; min-height: 100vh; margin: 0; }
+    .card { padding: 24px; border: 1px solid #ccc; border-radius: 12px; max-width: 400px; width: 90%; text-align: center; }
+    h1 { margin: 0 0 12px; font-size: 24px; }
+    .count { font-size: 48px; font-weight: 700; margin: 8px 0 16px; }
+    .row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    button { padding: 10px 16px; font-size: 16px; border-radius: 8px; border: 1px solid #999; cursor: pointer; }
+    button:active { transform: scale(0.98); }
+    .hint { margin-top: 12px; font-size: 12px; color: #666; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Clicker</h1>
+    <div class="count" id="count">0</div>
+    <div class="row">
+      <button id="click">Click (+1)</button>
+      <button id="upgrade">Upgrade (Cost: 10)</button>
+      <button id="reset">Reset</button>
+    </div>
+    <div class="hint">Spend smeebus's to buy upgraded versions. Max power = 100,000.</div>
+  </div>
+
+  <script>
+    const countEl = document.getElementById('count');
+    const clickBtn = document.getElementById('click');
+    const upgradeBtn = document.getElementById('upgrade');
+    const resetBtn = document.getElementById('reset');
+    const KEY = 'clicker-count';
+    const POWER_KEY = 'clicker-power';
+    const LEVEL_KEY = 'clicker-level';
+
+    let count = Number(localStorage.getItem(KEY)) || 0;
+    let clickPower = Number(localStorage.getItem(POWER_KEY)) || 1;
+    let level = Number(localStorage.getItem(LEVEL_KEY)) || 1;
+
+    render();
+
+    clickBtn.addEventListener('click', () => {
+      count += clickPower;
+      persist();
+    });
+
+    upgradeBtn.addEventListener('click', () => {
+      const cost = getUpgradeCost(level);
+      if (clickPower >= 100000) {
+        alert("Max upgrade reached!");
+        return;
+      }
+      if (count >= cost) {
+        count -= cost;
+        level++;
+        clickPower = Math.min(clickPower + 1, 100000);
+        persist();
+      } else {
+        alert(`Not enough clicks! Need ${cost}.`);
+      }
+    });
+
+    resetBtn.addEventListener('click', () => {
+      count = 0;
+      clickPower = 1;
+      level = 1;
+      persist();
+    });
+
+    function getUpgradeCost(lvl) {
+      return 10 * Math.pow(2, lvl - 1);
+    }
+
+    function persist() {
+      localStorage.setItem(KEY, String(count));
+      localStorage.setItem(POWER_KEY, String(clickPower));
+      localStorage.setItem(LEVEL_KEY, String(level));
+      render();
+    }
+
+    function render() {
+      countEl.textContent = count;
+      clickBtn.textContent = `Click (+${clickPower})`;
+      upgradeBtn.textContent = `Upgrade (Cost: ${getUpgradeCost(level)})`;
+    }
+  </script>
+</body>
+</html>
