@@ -56,12 +56,11 @@
     const POWER_KEY = 'clicker-power';
     const LEVEL_KEY = 'clicker-level';
 
-    // 👉 Customize your photos and names here
     const stages = [
       { name: "Stage 1: Schmidgen", photo: "url('photo1.jpg')" },
       { name: "Stage 2: Schmleb", photo: "url('photo2.jpg')" },
       { name: "Stage 3: Schmeeble", photo: "url('photo3.jpg')" },
-      { name: "Stage 4: ", photo: "url('photo4.jpg')" },
+      { name: "Stage 4: schmeeblet", photo: "url('photo4.jpg')" },
       { name: "Stage 5: ", photo: "url('photo5.jpg')" },
       { name: "Stage 6: Schm", photo: "url('photo6.jpg')" },
       { name: "Stage 7: Grandmaster", photo: "url('photo6.jpg')" },
@@ -135,7 +134,6 @@
       clickBtn.textContent = `Click (+${clickPower})`;
       upgradeBtn.textContent = `Upgrade (Cost: ${getUpgradeCost(level)})`;
 
-      // Ensure correct stage shown on reload
       const stageIndex = (level - 1) % stages.length;
       if (stages[stageIndex]) {
         document.body.style.backgroundImage = stages[stageIndex].photo;
